@@ -59,6 +59,7 @@ bool canguruETHClient::startTelnetSrv()
       printTelnet(true, "From (own)IP " + ip2strng(ETH.localIP()));
       printTelnet(true, "Connected to " + ip2strng(tlntClnt.remoteIP()));
       printTelnet(true, "");
+      delay(100);
     }
   }
   return telnethasconnected;
