@@ -1,2 +1,2 @@
-# 95-Library-CANguruBridge
- Library for the CANguru Bridge
+# 95-Library-CANguruDecoder
+ Library for the CANguru Decoders
