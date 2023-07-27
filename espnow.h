@@ -292,8 +292,10 @@ void sendPING()
   opFrame[data6] = DEVTYPE >> 8;
   opFrame[data7] = DEVTYPE;
   sendCanFrame();
+  #ifdef time2Poll
   if (time2Poll == 0)
     time2Poll = millis();
+  #endif
 }
 
 // sendIP ist die Antwort der Decoder auf eine Abfrage der IP-Adresse
