@@ -277,30 +277,6 @@ Byte 6	D-Byte 6	8 Bit Daten
 Byte 7	D-Byte 7	8 Bit Daten
 */
 
-// receiveKanalData dient der Parameterübertragung zwischen Decoder und CANguru-Server
-// es erhält die evtuelle auf dem Server geänderten Werte zurück
-void receiveKanalData()
-{
-  SYS_CMD_Request = false;
-
-  uint8_t oldval = channel_index[opFrame[data5] - 1];
-  channel_index[opFrame[data5] - 1] = (opFrame[data6] << 8) + opFrame[data7];
-  if (testMinMax(oldval, channel_index[opFrame[data5] - 1], minadr, maxadr))
-  {
-    // speichert die neue Adresse
-    EEPROM.write(adr_index + opFrame[data5] - 1, channel_index[opFrame[data5] - 1]);
-    EEPROM.commit();
-  }
-  else
-  {
-    channel_index[opFrame[data5] - 1] = oldval;
-  }
-  // antworten
-  opFrame[data6] = 0x01;
-  opFrame[Framelng] = 0x07;
-  sendCanFrame();
-}
-
 // sendPING ist die Antwort der Decoder auf eine PING-Anfrage
 void sendPING()
 {
