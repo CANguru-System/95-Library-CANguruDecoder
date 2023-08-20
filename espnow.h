@@ -292,7 +292,7 @@ void sendPING()
   opFrame[data6] = DEVTYPE >> 8;
   opFrame[data7] = DEVTYPE;
   sendCanFrame();
-  #ifdef time2Poll
+  #ifdef TIME2POLL
   if (time2Poll == 0)
     time2Poll = millis();
   #endif
