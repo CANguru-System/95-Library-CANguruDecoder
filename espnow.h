@@ -296,12 +296,6 @@ void sendPING()
   if (time2Poll == 0)
     time2Poll = millis();
   #endif
-  #ifdef STARTCURRENT
-  for (boosters booster = booster_0; booster < endbooster; booster = boosters(booster + 1))
-  {
-    turnPowerOn(booster);
-  }
-  #endif
 }
 
 // sendIP ist die Antwort der Decoder auf eine Abfrage der IP-Adresse
