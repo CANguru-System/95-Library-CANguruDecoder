@@ -5,6 +5,7 @@
 #include "EEPROM.h"
 #include <OTA_include.h>
 #include "ticker.h"
+#include "OWN_LED.h"
 
 #include <ElegantOTA.h>
 
@@ -48,10 +49,10 @@ void timerOTA()
   }
   if (secs % 2 == 0)
     // turn the LED on by making the voltage HIGH
-    digitalWrite(BUILTIN_LED, HIGH);
+    LED_on();
   else
     // turn the LED off by making the voltage LOW
-    digitalWrite(BUILTIN_LED, LOW);
+    LED_off();
 }
 
 // Create AsyncWebServer object on port 80

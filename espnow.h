@@ -12,6 +12,7 @@
 #define ESP_NOW_H
 
 #include <Arduino.h>
+#include <OWN_LED.h>
 
 const uint8_t WIFI_CHANNEL = 0;
 const uint8_t macLen = 6;
@@ -44,29 +45,6 @@ const float tckr1Time = 0.025;
 
 uint16_t secs;
 
-void LED_begin()
-{
-#ifdef ESP32_DECODER
-  pinMode(LED_BUILTIN, OUTPUT);
-  // turn the LED off by making the voltage LOW
-  digitalWrite(LED_BUILTIN, LOW);
-#endif
-}
-
-void LED_on()
-{
-#ifdef ESP32_DECODER
-  digitalWrite(LED_BUILTIN, HIGH);
-#endif
-}
-
-void LED_off()
-{
-#ifdef ESP32_DECODER
-  digitalWrite(LED_BUILTIN, LOW);
-#endif
-}
-
 //*********************************************************************************************************
 // das Aufblitzen der LED auf dem ESP32-Modul wird mit diesem Timer
 // nach Anstoß durch die CANguru-Bridge (BlinkAlive) umgesetzt
@@ -94,11 +72,11 @@ void timer1s()
 }
 
 // meldet den Timer an
-void stillAliveBlinkSetup()
+void stillAliveBlinkSetup(uint8_t LED)
 {
   tckr1.attach(tckr1Time, timer1s); // each sec
   // initialize LED digital pin as an output.
-  LED_begin();
+  LED_begin(LED);
   secs = 0;
 }
 
