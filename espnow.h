@@ -57,6 +57,10 @@ void timer1s()
     {
       // bei gerader Zahl aus
       LED_off();
+#ifdef ESP32_STEPPER
+      if (!bBlinkAlive)
+        secs = 10;
+#endif
     }
     else
     {
