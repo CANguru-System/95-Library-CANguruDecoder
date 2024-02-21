@@ -130,8 +130,10 @@ void startAPMode()
   ssid0 = ssid0 + ssid1;
   char ssid[30];
   ssid0.toCharArray(ssid, 30);
-  WiFi.softAP(ssid); // Name des Access Points
-  log_i("%s", ssid);
+  if (!WiFi.softAP(ssid)) // Name des Access Points
+    log_i("WIFI %s failed", ssid);
+  else
+    log_i("WIFI %s OK", ssid);
 }
 
 // Fehlermeldungen, die hoffentlich nicht gebraucht werden
