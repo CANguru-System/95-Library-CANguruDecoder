@@ -282,6 +282,12 @@ void sendPING()
   #endif
 }
 
+void sendDecoderIsAlive()
+{
+  bDecoderIsAlive = false;
+  sendCanFrame();
+}
+
 // sendIP ist die Antwort der Decoder auf eine Abfrage der IP-Adresse
 void sendIP()
 {
